@@ -68,7 +68,11 @@ const dashboardSlice = createSlice({
             state.isModalOpen = action.payload;
         },
         setSelectedGenre: (state, action: PayloadAction<string | null>) => {
-            state.selectedGenre = action.payload;
+            if (state.selectedGenre === action.payload) {
+                state.selectedGenre = null;
+            } else {
+                state.selectedGenre = action.payload;
+            }
         },
     },
     extraReducers: (builder) => {
